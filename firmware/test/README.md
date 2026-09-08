@@ -7,7 +7,7 @@ eight pads register; it does not tell the buttons apart. Flash the real firmware
 
 ## Pin finder
 
-`ploopyco_madromys_pinfinder_default.uf2` treats **every spare RP2040 GPIO** as a button and
+`ploopyco_madromys_pinfinder_v2.uf2` treats **every spare RP2040 GPIO** as a button and
 types a letter when that pin is pulled to ground. Flash it, open a text editor, press each
 button (or bridge each switch pad to ground) and read the letter:
 
