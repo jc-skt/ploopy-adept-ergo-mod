@@ -10,7 +10,7 @@ two side-by-side buttons under them.
 
 | | |
 |---|---|
-| **Status** | Firmware builds and lints clean. **Not yet tested on hardware**; see the note on GP4/GP14 below. STL files are still being exported. |
+| **Status** | Firmware built, flashed and pin-verified on a real board (all eight pads answer on the pins below). VIA remapping check still to come. STL files are still being exported. |
 | **Hardware** | Ploopy Adept (Madromys R1.001 or later PCB), all eight switch pads populated |
 | **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergo`, keymap `default`, VIA enabled, USB PID `0x5C48` |
 | **Remapping** | VIA with a sideloaded draft definition (`firmware/via/adept-ergo-8.json`) |
@@ -36,18 +36,18 @@ One matrix row; the columns follow the direct-pin order
 |---|---|---|---|
 | Left top | SW1 | GP17 | Forward (`MS_BTN5`) |
 | Left middle | SW2 | GP19 | Back (`MS_BTN4`) |
-| Thumb outer | SW5 | GP4 * | Left click (`MS_BTN1`) |
+| Thumb outer | SW5 | GP4 | Left click (`MS_BTN1`) |
 | Thumb inner | SW8 | GP15 | Drag scroll, hold (`DRAG_SCROLL`) |
 | Right top | SW4 | GP21 | Shift, hold (`KC_LSFT`) |
 | Right middle | SW3 | GP23 | Right click (`MS_BTN2`) |
 | Right bottom inner | SW6 | GP11 | Cycle DPI 1200 / 1600 / 2400 (`DPI_CONFIG`) |
-| Right bottom outer | SW7 | GP14 * | Middle click (`MS_BTN3`) |
+| Right bottom outer | SW7 | GP14 | Middle click (`MS_BTN3`) |
 
-\* **Unconfirmed.** SW5 and SW7 are the pads the stock board leaves empty. The unmerged upstream
-8-button commit assigns them GP4 and GP14 but not which is which. If, in VIA's key tester, the
-thumb outer and right bottom outer keys light up swapped, swap the two matrix indices `[0, 6]`
-and `[0, 7]` in `keyboard.json` and the labels `"0,6"` / `"0,7"` in the VIA JSON, then rebuild.
-This README will be updated once it has been checked on a real board.
+SW5 and SW7 are the pads the stock board leaves empty. Their pins were confirmed on a real
+board with the pin-finder firmware in `firmware/test/` (every spare GPIO types its own letter),
+which is also the quickest way to check your own board: if a pad never types anything, its trace
+or solder joint is the problem, not the firmware. Do not use GP1: it reads low at power-up on
+at least one board.
 
 Drag scroll is momentary (hold), divisor 8 on both axes. Everything is remappable in VIA; the
 custom keycodes `DPI` and `Drag` appear under the **Custom** group.
