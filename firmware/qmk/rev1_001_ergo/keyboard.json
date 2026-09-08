@@ -1,0 +1,38 @@
+{
+    "keyboard_name": "Ploopy Adept Ergo 8",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x5C48"
+    },
+    "matrix_pins": {
+        "direct": [
+            ["GP15", "GP17", "GP19", "GP21", "GP23", "GP11", "GP4", "GP14"]
+        ]
+    },
+    "layouts": {
+        "LAYOUT_ergo": {
+            "layout": [
+                {"matrix": [0, 1], "label": "Left top",           "x": 0.35,  "y": 0,   "w": 1.5},
+                {"matrix": [0, 2], "label": "Left middle",        "x": 0.35,  "y": 1.1},
+                {"matrix": [0, 6], "label": "Thumb outer",        "x": 0, "y": 2.8, "h": 1.5},
+                {"matrix": [0, 0], "label": "Thumb inner",        "x": 1.15,  "y": 2.4, "h": 1.5},
+                {"matrix": [0, 3], "label": "Right top",          "x": 3.95,  "y": 0,   "w": 1.5, "h": 0.85},
+                {"matrix": [0, 4], "label": "Right middle",       "x": 4.35,  "y": 1.1, "w": 1.1},
+                {"matrix": [0, 5], "label": "Right bottom inner", "x": 3.95,  "y": 2.2, "w": 1.25},
+                {"matrix": [0, 7], "label": "Right bottom outer", "x": 5.35,  "y": 2.2, "w": 1.15}
+            ]
+        }
+    },
+    "rgblight": {
+        "led_count": 3,
+        "max_brightness": 40,
+        "animations": {
+            "breathing": true,
+            "rainbow_mood": true,
+            "rainbow_swirl": true
+        }
+    },
+    "ws2812": {
+        "pin": "GP12"
+    }
+}
