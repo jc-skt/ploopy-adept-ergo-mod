@@ -21,6 +21,7 @@ two side-by-side buttons under them.
 firmware/ploopyco_madromys_rev1_001_ergo_default.uf2   ready-to-flash firmware
 firmware/via/adept-ergo-8.json                      VIA v3 draft definition for the ergo layout
 firmware/qmk/rev1_001_ergo/                         QMK keyboard folder (source)
+firmware/test/                                      all-buttons-right-click test build
 firmware/LICENSE                                    GPL-2.0-or-later (firmware)
 stl/                                                printable parts (coming soon)
 LICENSE                                             CC BY-SA 4.0 (hardware, docs)
