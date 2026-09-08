@@ -12,13 +12,13 @@ two side-by-side buttons under them.
 |---|---|
 | **Status** | Firmware builds and lints clean. **Not yet tested on hardware**; see the note on GP4/GP14 below. STL files are still being exported. |
 | **Hardware** | Ploopy Adept (Madromys R1.001 or later PCB), all eight switch pads populated |
-| **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergo`, keymap `ergo`, VIA enabled, USB PID `0x5C48` |
+| **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergo`, keymap `default`, VIA enabled, USB PID `0x5C48` |
 | **Remapping** | VIA with a sideloaded draft definition (`firmware/via/adept-ergo-8.json`) |
 
 ## Contents
 
 ```
-firmware/ploopyco_madromys_rev1_001_ergo_ergo.uf2   ready-to-flash firmware
+firmware/ploopyco_madromys_rev1_001_ergo_default.uf2   ready-to-flash firmware
 firmware/via/adept-ergo-8.json                      VIA v3 draft definition for the ergo layout
 firmware/qmk/rev1_001_ergo/                         QMK keyboard folder (source)
 firmware/LICENSE                                    GPL-2.0-or-later (firmware)
@@ -56,7 +56,7 @@ custom keycodes `DPI` and `Drag` appear under the **Custom** group.
 1. Put the trackball into the bootloader: hold **Thumb inner** while plugging in the USB cable
    (Bootmagic), or, with the bottom cover off, bridge the two gold-plated vias on the PCB with
    tweezers while plugging in. A USB drive called `RPI-RP2` appears.
-2. Copy `firmware/ploopyco_madromys_rev1_001_ergo_ergo.uf2` onto that drive. It ejects itself
+2. Copy `firmware/ploopyco_madromys_rev1_001_ergo_default.uf2` onto that drive. It ejects itself
    and the trackball re-enumerates as a mouse.
 
 There is no reset button on the Madromys. If the board stops enumerating altogether, enter the
@@ -84,7 +84,7 @@ of `jc-skt/qmk_firmware`:
 
 ```
 qmk setup jc-skt/qmk_firmware -b adept-ergo-8button
-qmk compile -kb ploopyco/madromys/rev1_001_ergo -km ergo
+qmk compile -kb ploopyco/madromys/rev1_001_ergo -km default
 ```
 
 Or copy `firmware/qmk/rev1_001_ergo/` into `keyboards/ploopyco/madromys/` of any recent QMK

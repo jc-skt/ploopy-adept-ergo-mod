@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include QMK_KEYBOARD_H
 
-// Physical order (LAYOUT_ergo); keymap folder is "ergo" because qmk lint rejects a keymap named "via":
+// Physical order (LAYOUT_ergo). This is the "default" keymap (VIA enabled); qmk lint rejects keymaps named "via".
 //   left top, left middle, thumb outer, thumb inner,
 //   right top, right middle, right bottom inner, right bottom outer
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
