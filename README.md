@@ -10,7 +10,7 @@ two side-by-side buttons under them.
 
 | | |
 |---|---|
-| **Status** | Firmware verified on a real board: all eight buttons, drag scroll, DPI cycling and VIA remapping (persists across replug). STL files are still being exported. |
+| **Status** | Firmware verified on a real board: all eight buttons, drag scroll, DPI cycling and VIA remapping (persists across replug). STLs being uploaded. |
 | **Hardware** | Ploopy Adept (Madromys R1.001 or later PCB), all eight switch pads populated |
 | **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergo`, keymap `default`, VIA enabled, USB PID `0x5C48`, current version **1.0.2** |
 | **Remapping** | VIA with a sideloaded draft definition (`firmware/via/adept-ergo-8.json`) |
@@ -22,7 +22,9 @@ firmware/ploopyco_madromys_rev1_001_ergo_default_v1.0.2.uf2   ready-to-flash fir
 firmware/via/adept-ergo-8.json                      VIA v3 draft definition for the ergo layout
 firmware/qmk/rev1_001_ergo/                         QMK keyboard folder (source)
 firmware/LICENSE                                    GPL-2.0-or-later (firmware)
-stl/                                                printable parts (coming soon)
+stl/                                                bottom, top and cradle STLs
+stl/keycaps/                                        eight parametric keycaps (KLP Lame derived) + parameter guide
+fusion/                                             Fusion 360 source (.f3d)
 LICENSE                                             CC BY-SA 4.0 (hardware, docs)
 ```
 
@@ -102,7 +104,10 @@ checkout (see `firmware/qmk/README.md`).
 
 ## Printing
 
-STL files and print settings are coming soon.
+Three shell parts (`stl/bottom.stl`, `stl/top.stl`, `stl/cradle.stl`) and eight keycaps
+(`stl/keycaps/`). The keycaps are derived from [KLP Lamé](https://github.com/braindefender/KLP-Lame-Keycaps)
+and are parametric in the Fusion 360 source; `stl/keycaps/README.md` lists every parameter and
+what it does.
 
 ## License
 
@@ -113,4 +118,5 @@ STL files and print settings are coming soon.
 ## Credits
 
 - [Ploopy](https://ploopy.co) for the Adept, the open hardware files and the QMK support.
+- [braindefender's KLP Lamé](https://github.com/braindefender/KLP-Lame-Keycaps) for the keycap profiles (CC BY-SA 4.0).
 - [QMK](https://qmk.fm) and [VIA](https://usevia.app).
