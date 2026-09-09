@@ -12,13 +12,13 @@ two side-by-side buttons under them.
 |---|---|
 | **Status** | Firmware built, flashed and pin-verified on a real board (all eight pads answer on the pins below). VIA remapping check still to come. STL files are still being exported. |
 | **Hardware** | Ploopy Adept (Madromys R1.001 or later PCB), all eight switch pads populated |
-| **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergo`, keymap `default`, VIA enabled, USB PID `0x5C48` |
+| **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergo`, keymap `default`, VIA enabled, USB PID `0x5C48`, current version **1.0.1** |
 | **Remapping** | VIA with a sideloaded draft definition (`firmware/via/adept-ergo-8.json`) |
 
 ## Contents
 
 ```
-firmware/ploopyco_madromys_rev1_001_ergo_default.uf2   ready-to-flash firmware
+firmware/ploopyco_madromys_rev1_001_ergo_default_v1.0.1.uf2   ready-to-flash firmware (versioned)
 firmware/via/adept-ergo-8.json                      VIA v3 draft definition for the ergo layout
 firmware/qmk/rev1_001_ergo/                         QMK keyboard folder (source)
 firmware/test/                                      all-buttons-right-click test build
@@ -57,13 +57,23 @@ custom keycodes `DPI` and `Drag` appear under the **Custom** group.
 1. Put the trackball into the bootloader: hold **Thumb inner** while plugging in the USB cable
    (Bootmagic), or, with the bottom cover off, bridge the two gold-plated vias on the PCB with
    tweezers while plugging in. A USB drive called `RPI-RP2` appears.
-2. Copy `firmware/ploopyco_madromys_rev1_001_ergo_default.uf2` onto that drive. It ejects itself
+2. Copy the newest `firmware/ploopyco_madromys_rev1_001_ergo_default_v*.uf2` onto that drive. It ejects itself
    and the trackball re-enumerates as a mouse.
 
 There is no reset button on the Madromys. If the board stops enumerating altogether, enter the
 bootloader with the vias, copy Raspberry Pi's
 [`flash_nuke.uf2`](https://datasheets.raspberrypi.com/soft/flash_nuke.uf2) to `RPI-RP2`, wait
 for the drive to return, then flash again.
+
+## Firmware versions
+
+The version is in the file name and in the USB device descriptor (Device Manager shows it as the
+firmware revision; VIA shows it under the device name).
+
+| Version | Date | Change |
+|---|---|---|
+| 1.0.1 | 2026-09-08 | PID `0x5C48` really applied (1.0.0 still enumerated as the stock `0x5C47`, so VIA showed the stock Adept). |
+| 1.0.0 | 2026-09-08 | First build. Not usable with the ergo VIA definition; superseded. |
 
 ## Remapping in VIA
 
