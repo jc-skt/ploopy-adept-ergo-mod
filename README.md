@@ -10,7 +10,7 @@ two side-by-side buttons under them.
 
 | | |
 |---|---|
-| **Status** | Firmware built, flashed and pin-verified on a real board (all eight pads answer on the pins below). VIA remapping check still to come. STL files are still being exported. |
+| **Status** | Firmware 1.0.1 verified on a real board: all eight buttons, drag scroll, DPI cycling and VIA remapping (persists across replug). STL files are still being exported. |
 | **Hardware** | Ploopy Adept (Madromys R1.001 or later PCB), all eight switch pads populated |
 | **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergo`, keymap `default`, VIA enabled, USB PID `0x5C48`, current version **1.0.1** |
 | **Remapping** | VIA with a sideloaded draft definition (`firmware/via/adept-ergo-8.json`) |
@@ -49,8 +49,9 @@ which is also the quickest way to check your own board: if a pad never types any
 or solder joint is the problem, not the firmware. Do not use GP1: it reads low at power-up on
 at least one board.
 
-Drag scroll is momentary (hold), divisor 8 on both axes. Everything is remappable in VIA; the
-custom keycodes `DPI` and `Drag` appear under the **Custom** group.
+Drag scroll is momentary (hold), divisor 8 on both axes. The DPI button cycles 1200 → 1600 → 2400
+→ 1200, starting at 1200 after a fresh flash (the current step is remembered in EEPROM). Everything
+is remappable in VIA; the custom keycodes `DPI` and `Drag` appear under the **Custom** group.
 
 ## Flashing
 
