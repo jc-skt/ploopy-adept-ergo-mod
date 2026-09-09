@@ -6,5 +6,5 @@
 #define PLOOPY_DRAGSCROLL_MOMENTARY        // hold the button to drag-scroll
 #define PLOOPY_DRAGSCROLL_DIVISOR_H 8.0
 #define PLOOPY_DRAGSCROLL_DIVISOR_V 8.0
-#define PLOOPY_DPI_OPTIONS { 1200, 1600, 2400 }
-#define PLOOPY_DPI_DEFAULT 0
+#define PLOOPY_DPI_OPTIONS { 400, 800, 1200, 1600 }
+#define PLOOPY_DPI_DEFAULT 2   // start at 1200

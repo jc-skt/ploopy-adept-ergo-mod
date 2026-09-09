@@ -1,7 +1,7 @@
 {
     "keyboard_name": "Ploopy Adept Ergo 8",
     "usb": {
-        "device_version": "1.0.1",
+        "device_version": "1.0.2",
         "pid": "0x5C48"
     },
     "matrix_pins": {

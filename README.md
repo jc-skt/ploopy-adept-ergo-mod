@@ -10,18 +10,17 @@ two side-by-side buttons under them.
 
 | | |
 |---|---|
-| **Status** | Firmware 1.0.1 verified on a real board: all eight buttons, drag scroll, DPI cycling and VIA remapping (persists across replug). STL files are still being exported. |
+| **Status** | Firmware verified on a real board: all eight buttons, drag scroll, DPI cycling and VIA remapping (persists across replug). STL files are still being exported. |
 | **Hardware** | Ploopy Adept (Madromys R1.001 or later PCB), all eight switch pads populated |
-| **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergo`, keymap `default`, VIA enabled, USB PID `0x5C48`, current version **1.0.1** |
+| **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergo`, keymap `default`, VIA enabled, USB PID `0x5C48`, current version **1.0.2** |
 | **Remapping** | VIA with a sideloaded draft definition (`firmware/via/adept-ergo-8.json`) |
 
 ## Contents
 
 ```
-firmware/ploopyco_madromys_rev1_001_ergo_default_v1.0.1.uf2   ready-to-flash firmware (versioned)
+firmware/ploopyco_madromys_rev1_001_ergo_default_v1.0.2.uf2   ready-to-flash firmware (versioned)
 firmware/via/adept-ergo-8.json                      VIA v3 draft definition for the ergo layout
 firmware/qmk/rev1_001_ergo/                         QMK keyboard folder (source)
-firmware/test/                                      all-buttons-right-click test build
 firmware/LICENSE                                    GPL-2.0-or-later (firmware)
 stl/                                                printable parts (coming soon)
 LICENSE                                             CC BY-SA 4.0 (hardware, docs)
@@ -40,17 +39,15 @@ One matrix row; the columns follow the direct-pin order
 | Thumb inner | SW8 | GP15 | Drag scroll, hold (`DRAG_SCROLL`) |
 | Right top | SW4 | GP21 | Shift, hold (`KC_LSFT`) |
 | Right middle | SW3 | GP23 | Right click (`MS_BTN2`) |
-| Right bottom inner | SW6 | GP11 | Cycle DPI 1200 / 1600 / 2400 (`DPI_CONFIG`) |
+| Right bottom inner | SW6 | GP11 | Cycle DPI 400 / 800 / 1200 / 1600 (`DPI_CONFIG`) |
 | Right bottom outer | SW7 | GP14 | Middle click (`MS_BTN3`) |
 
-SW5 and SW7 are the pads the stock board leaves empty. Their pins were confirmed on a real
-board with the pin-finder firmware in `firmware/test/` (every spare GPIO types its own letter),
-which is also the quickest way to check your own board: if a pad never types anything, its trace
-or solder joint is the problem, not the firmware. Do not use GP1: it reads low at power-up on
-at least one board.
+SW5 and SW7 are the pads the stock board leaves empty; their pins were confirmed on a real
+board. If one button never registers, suspect its solder joint or trace before the firmware. Do
+not use GP1 for anything: it reads low at power-up on at least one board.
 
-Drag scroll is momentary (hold), divisor 8 on both axes. The DPI button cycles 1200 → 1600 → 2400
-→ 1200, starting at 1200 after a fresh flash (the current step is remembered in EEPROM). Everything
+Drag scroll is momentary (hold), divisor 8 on both axes. The DPI button cycles 400 → 800 → 1200 →
+1600 → 400, starting at 1200 after a fresh flash (the current step is remembered in EEPROM). Everything
 is remappable in VIA; the custom keycodes `DPI` and `Drag` appear under the **Custom** group.
 
 ## Flashing
@@ -73,6 +70,7 @@ firmware revision; VIA shows it under the device name).
 
 | Version | Date | Change |
 |---|---|---|
+| 1.0.2 | 2026-09-08 | DPI steps 400 / 800 / 1200 / 1600 (was 1200 / 1600 / 2400); starts at 1200. |
 | 1.0.1 | 2026-09-08 | PID `0x5C48` really applied (1.0.0 still enumerated as the stock `0x5C47`, so VIA showed the stock Adept). |
 | 1.0.0 | 2026-09-08 | First build. Not usable with the ergo VIA definition; superseded. |
 
