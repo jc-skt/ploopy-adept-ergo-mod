@@ -1,5 +1,5 @@
 {
-  "name": "Ploopy Adept Ergo 8",
+  "name": "Ploopy Adept - Ergo Mod",
   "vendorId": "0x5043",
   "productId": "0x5C48",
   "matrix": { "rows": 1, "cols": 8 },

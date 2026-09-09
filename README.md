@@ -83,9 +83,9 @@ The firmware uses PID `0x5C48`, which VIA does not know, so the layout is loaded
 1. Open https://usevia.app in Chrome or Edge (WebHID is required).
 2. Settings (gear) > turn on **Show Design tab**.
 3. **Design** tab > **Load Draft Definition** > pick `firmware/via/adept-ergo-8.json`.
-4. **Configure** tab > **Authorize device +** > choose *Ploopy Adept Ergo 8*.
+4. **Configure** tab > **Authorize device +** > choose *Ploopy Adept Ergo 8* (the USB product name). VIA then shows the layout as *Ploopy Adept - Ergo Mod*.
 
-Draft definitions live in the browser's storage, so repeat step 3 after clearing site data or on
+Draft definitions are kept in the browser's own storage (IndexedDB), so they survive reloads and closing the tab; repeat step 3 only after clearing site data, in a private window, or on
 a new machine. Remapped keys are stored on the trackball and survive replugging.
 
 ## Building from source
