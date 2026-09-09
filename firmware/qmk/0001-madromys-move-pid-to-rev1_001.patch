@@ -1,0 +1,54 @@
+From c4d15f02011561ca0706f318a2a3895f8e225fef Mon Sep 17 00:00:00 2001
+From: jc-skt <sortedstack@gmail.com>
+Date: Tue, 8 Sep 2026 18:00:43 -0600
+Subject: [PATCH] ploopyco/madromys: move pid and keyboard_name from parent
+ info.json into rev1_001
+
+QMK merges the parent info.json last, so a scalar set there cannot be
+overridden by a child keyboard.json; rev1_001_ergo's pid 0x5C48 was
+being replaced by the parent's 0x5C47 (and VIA then matched the stock
+Adept definition). Same approach as the unmerged upstream commit
+42212a39 (rev1_001_8button).
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01QfWjznjySQ7A6rmURkmw9g
+---
+ keyboards/ploopyco/madromys/info.json              | 2 --
+ keyboards/ploopyco/madromys/rev1_001/keyboard.json | 4 +++-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/keyboards/ploopyco/madromys/info.json b/keyboards/ploopyco/madromys/info.json
+index b5e74d3bc2..414b5562a3 100644
+--- a/keyboards/ploopyco/madromys/info.json
++++ b/keyboards/ploopyco/madromys/info.json
+@@ -1,5 +1,4 @@
+ {
+-    "keyboard_name": "Ploopy Adept Trackball",
+     "url": "www.ploopy.co",
+     "maintainer": "ploopyco",
+     "manufacturer": "Ploopy Corporation",
+@@ -7,7 +6,6 @@
+     "bootloader": "rp2040",
+     "usb": {
+         "vid": "0x5043",
+-        "pid": "0x5C47",
+         "max_power": 100
+     },
+     "features": {
+diff --git a/keyboards/ploopyco/madromys/rev1_001/keyboard.json b/keyboards/ploopyco/madromys/rev1_001/keyboard.json
+index 5cb4ee3938..ae2409e71a 100644
+--- a/keyboards/ploopyco/madromys/rev1_001/keyboard.json
++++ b/keyboards/ploopyco/madromys/rev1_001/keyboard.json
+@@ -1,6 +1,8 @@
+ {
++    "keyboard_name": "Ploopy Adept Trackball",
+     "usb": {
+-        "device_version": "1.0.0"
++        "device_version": "1.0.0",
++        "pid": "0x5C47"
+     },
+     "diode_direction": "COL2ROW",
+     "matrix_pins": {
+-- 
+2.52.0.windows.1
+
