@@ -12,15 +12,15 @@ two side-by-side buttons under them.
 |---|---|
 | **Status** | Firmware verified on a real board: all eight buttons, drag scroll, DPI cycling and VIA remapping (persists across replug). STLs being uploaded. |
 | **Hardware** | Ploopy Adept (Madromys R1.001 or later PCB), all eight switch pads populated |
-| **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergo`, keymap `default`, VIA enabled, USB PID `0x5C48`, current version **1.0.2** |
-| **Remapping** | VIA with a sideloaded draft definition (`firmware/via/adept-ergo-8.json`) |
+| **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergomod`, keymap `default`, VIA enabled, USB PID `0x5C48`, current version **1.0.3** |
+| **Remapping** | VIA with a sideloaded draft definition (`firmware/via/ploopy-adept-ergo-mod.json`) |
 
 ## Contents
 
 ```
-firmware/ploopyco_madromys_rev1_001_ergo_default_v1.0.2.uf2   ready-to-flash firmware (versioned)
-firmware/via/adept-ergo-8.json                      VIA v3 draft definition for the ergo layout
-firmware/qmk/rev1_001_ergo/                         QMK keyboard folder (source)
+firmware/ploopyco_madromys_rev1_001_ergomod_default_v1.0.3.uf2   ready-to-flash firmware (versioned)
+firmware/via/ploopy-adept-ergo-mod.json             VIA v3 draft definition for the ergo layout
+firmware/qmk/rev1_001_ergomod/                      QMK keyboard folder (source)
 firmware/LICENSE                                    GPL-2.0-or-later (firmware)
 stl/                                                bottom, top and cradle STLs
 stl/keycaps/                                        eight parametric keycaps (KLP Lame derived) + parameter guide
@@ -57,7 +57,7 @@ is remappable in VIA; the custom keycodes `DPI` and `Drag` appear under the **Cu
 1. Put the trackball into the bootloader: hold **Thumb inner** while plugging in the USB cable
    (Bootmagic), or, with the bottom cover off, bridge the two gold-plated vias on the PCB with
    tweezers while plugging in. A USB drive called `RPI-RP2` appears.
-2. Copy the newest `firmware/ploopyco_madromys_rev1_001_ergo_default_v*.uf2` onto that drive. It ejects itself
+2. Copy the newest `firmware/ploopyco_madromys_rev1_001_ergomod_default_v*.uf2` onto that drive. It ejects itself
    and the trackball re-enumerates as a mouse.
 
 There is no reset button on the Madromys. If the board stops enumerating altogether, enter the
@@ -72,6 +72,7 @@ firmware revision; VIA shows it under the device name).
 
 | Version | Date | Change |
 |---|---|---|
+| 1.0.3 | 2026-09-08 | Renamed everything to *Ploopy Adept - Ergo Mod*: USB product name, VIA definition, QMK folder `rev1_001_ergomod`, branch `adept-ergo-mod`, file names. No functional change. |
 | 1.0.2 | 2026-09-08 | DPI steps 400 / 800 / 1200 / 1600 (was 1200 / 1600 / 2400); starts at 1200. |
 | 1.0.1 | 2026-09-08 | PID `0x5C48` really applied (1.0.0 still enumerated as the stock `0x5C47`, so VIA showed the stock Adept). |
 | 1.0.0 | 2026-09-08 | First build. Not usable with the ergo VIA definition; superseded. |
@@ -82,8 +83,8 @@ The firmware uses PID `0x5C48`, which VIA does not know, so the layout is loaded
 
 1. Open https://usevia.app in Chrome or Edge (WebHID is required).
 2. Settings (gear) > turn on **Show Design tab**.
-3. **Design** tab > **Load Draft Definition** > pick `firmware/via/adept-ergo-8.json`.
-4. **Configure** tab > **Authorize device +** > choose *Ploopy Adept Ergo 8* (the USB product name). VIA then shows the layout as *Ploopy Adept - Ergo Mod*.
+3. **Design** tab > **Load Draft Definition** > pick `firmware/via/ploopy-adept-ergo-mod.json`.
+4. **Configure** tab > **Authorize device +** > choose *Ploopy Adept - Ergo Mod*.
 
 Draft definitions are kept in the browser's own storage (IndexedDB), so they survive reloads and closing the tab; repeat step 3 only after clearing site data, in a private window, or on
 a new machine. Remapped keys are stored on the trackball and survive replugging.
@@ -91,15 +92,15 @@ a new machine. Remapped keys are stored on the trackball and survive replugging.
 ## Building from source
 
 The keyboard folder lives on the
-[`adept-ergo-8button`](https://github.com/jc-skt/qmk_firmware/tree/adept-ergo-8button) branch
+[`adept-ergo-mod`](https://github.com/jc-skt/qmk_firmware/tree/adept-ergo-mod) branch
 of `jc-skt/qmk_firmware`:
 
 ```
-qmk setup jc-skt/qmk_firmware -b adept-ergo-8button
-qmk compile -kb ploopyco/madromys/rev1_001_ergo -km default
+qmk setup jc-skt/qmk_firmware -b adept-ergo-mod
+qmk compile -kb ploopyco/madromys/rev1_001_ergomod -km default
 ```
 
-Or copy `firmware/qmk/rev1_001_ergo/` into `keyboards/ploopyco/madromys/` of any recent QMK
+Or copy `firmware/qmk/rev1_001_ergomod/` into `keyboards/ploopyco/madromys/` of any recent QMK
 checkout (see `firmware/qmk/README.md`).
 
 ## Printing
