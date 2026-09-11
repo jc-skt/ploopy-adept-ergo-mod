@@ -12,13 +12,13 @@ two side-by-side buttons under them.
 |---|---|
 | **Status** | Firmware verified on a real board: all eight buttons, drag scroll, DPI cycling and VIA remapping (persists across replug). STLs being uploaded. |
 | **Hardware** | Ploopy Adept (Madromys R1.001 or later PCB), all eight switch pads populated |
-| **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergomod`, keymap `default`, VIA enabled, USB PID `0x5C48`, current version **1.0.3** |
+| **Firmware** | QMK, keyboard `ploopyco/madromys/rev1_001_ergomod`, keymap `default`, VIA enabled, USB PID `0x5C48`, current version **1.0.4** |
 | **Remapping** | VIA with a sideloaded draft definition (`firmware/via/ploopy-adept-ergo-mod.json`) |
 
 ## Contents
 
 ```
-firmware/ploopyco_madromys_rev1_001_ergomod_default_v1.0.3.uf2   ready-to-flash firmware (versioned)
+firmware/ploopyco_madromys_rev1_001_ergomod_default_v1.0.4.uf2   ready-to-flash firmware (versioned)
 firmware/via/ploopy-adept-ergo-mod.json             VIA v3 draft definition for the ergo layout
 firmware/qmk/rev1_001_ergomod/                      QMK keyboard folder (source)
 firmware/LICENSE                                    GPL-2.0-or-later (firmware)
@@ -48,7 +48,9 @@ SW5 and SW7 are the pads the stock board leaves empty; their pins were confirmed
 board. If one button never registers, suspect its solder joint or trace before the firmware. Do
 not use GP1 for anything: it reads low at power-up on at least one board.
 
-Drag scroll is momentary (hold), divisor 8 on both axes. The DPI button cycles 400 → 800 → 1200 →
+Drag scroll is momentary (hold), divisor 12 on both axes (12 sensor counts per wheel notch; raise
+it in `keymaps/default/config.h` to slow scrolling down), rolling the ball toward you scrolls the
+page down, and scroll speed also follows the current DPI step. The DPI button cycles 400 → 800 → 1200 →
 1600 → 400, starting at 1200 after a fresh flash (the current step is remembered in EEPROM). Everything
 is remappable in VIA; the custom keycodes `DPI` and `Drag` appear under the **Custom** group.
 
@@ -72,6 +74,7 @@ firmware revision; VIA shows it under the device name).
 
 | Version | Date | Change |
 |---|---|---|
+| 1.0.4 | 2026-09-11 | Drag scroll: divisors 8 → 12 (slower), vertical direction inverted (ball toward you = page down). |
 | 1.0.3 | 2026-09-08 | Renamed everything to *Ploopy Adept - Ergo Mod*: USB product name, VIA definition, QMK folder `rev1_001_ergomod`, branch `adept-ergo-mod`, file names. No functional change. |
 | 1.0.2 | 2026-09-08 | DPI steps 400 / 800 / 1200 / 1600 (was 1200 / 1600 / 2400); starts at 1200. |
 | 1.0.1 | 2026-09-08 | PID `0x5C48` really applied (1.0.0 still enumerated as the stock `0x5C47`, so VIA showed the stock Adept). |
